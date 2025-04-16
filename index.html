@@ -3,139 +3,604 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>บริการรถรับ-ส่ง ออนไลน์</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
-<body>
-    <div class="container text-center mt-4">
-        <h1>🚖 บริการรถรับ-ส่ง ออนไลน์</h1>
-    </div>
-    
-    <div class="container mt-4">
-        <form id="bookingForm">
-            <div class="mb-3">
-                <label class="form-label">ชื่อ-นามสกุล / ชื่อเล่น</label>
-                <input type="text" class="form-control" id="fullname" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">เบอร์โทรศัพท์</label>
-                <input type="tel" class="form-control" id="phone" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">เลือกจุดไปรับ</label>
-                <select class="form-select" id="pickup">
-                    <option value="ตลาดฟ้าไทย">สถานที่รับ</option>
-                    <option value="ตลาดฟ้าไทย">ตลาดฟ้าไทย</option>
-                    <option value="อู่รถสมบัติทัวร์(นางแล)">อู่รถสมบัติทัวร์(นางแล)</option>
-                    <option value="ห้าง Big C บ้านดู่เชียงราย">ห้าง Big C บ้านดู่เชียงราย</option>
-                    <option value="ม.ราชภัฏเชียงราย">ม.ราชภัฏเชียงราย</option>
-                    <option value="ห้าง เซ็ลทรัลเชียงราย">ห้าง เซ็ลทรัลเชียงราย</option>
-                    <option value="เชียงรายไนท์บาร์ซาร์">เชียงรายไนท์บาร์ซาร์</option>
-                    <option value="แม่จัน">แม่จัน</option>
-                    <option value="อาคารเรียนรวม C5 (อาคารพลตำรวจเอกเภา สารสิน)">อาคารเรียนรวม C5</option>
-                    <option value="อาคารปฏิบัติการ S">อาคารปฏิบัติการ S</option>
-                    <option value="ศูนย์บรรณสารและสื่อการศึกษา (ห้องสมุด)">ศูนย์บรรณสารและสื่อการศึกษา (ห้องสมุด)</option>
-                    <option value="หอพักลำดวน">หอพักลำดวน</option>
-                    <option value="อาคารเรียน C1 ">อาคารเรียน C1 </option>
-                    <option value="อาคารเรียน C2 ">อาคารเรียน C2 </option>
-                    <option value="อาคารเรียน C3 ">อาคารเรียน C3</option>
-                    <option value="อาคารเรียน C4">อาคารเรียน C4 หอประชุมสมเด็จย่า</option>
-                    <option value="อาคารเรียน C5">อาคารเรียน C5</option>
-                    <option value="อาคารโรงอาอาหาร D1">อาคารโรงอาอาหาร D1</option>
-                    <option value="พิพิธภัณฑ์อารยธรรมลุ่มน้ำโขง D2">พิพิธภัณฑ์อารยธรรมลุ่มน้ำโขง D2</option>
-                    <option value="อาคารสำนักงานวิชา E1">อาคารสำนักงานวิชา E1</option>
-                    <option value="อาคารสำนักงานวิชา E2">อาคารสำนักงานวิชา E2</option>
-                    <option value="อาคารสำนักงานวิชา E3">อาคารสำนักงานวิชา E3</option>
-                    <option value="อาคารพลเอกสำเภา ชูศรี E4">อาคารพลเอกสำเภา ชูศรี E4</option>
-                    <option value="อาคารปรีคลินิก M3">อาคารปรีคลินิก M3</option>
-                    <option value="อาคาร M-Square">อาคาร M-Square</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">เลือกจุดไปส่ง</label>
-                <select class="form-select" id="dropoff">
-                    <option value="ตลาดฟ้าไทย">สถานที่ส่ง</option>
-                    <option value="ตลาดฟ้าไทย">ตลาดฟ้าไทย</option>
-                    <option value="อู่รถสมบัติทัวร์(นางแล)">อู่รถสมบัติทัวร์(นางแล)</option>
-                    <option value="ห้าง Big C บ้านดู่เชียงราย">ห้าง Big C บ้านดู่เชียงราย</option>
-                    <option value="ม.ราชภัฏเชียงราย">ม.ราชภัฏเชียงราย</option>
-                    <option value="ห้าง เซ็ลทรัลเชียงราย">ห้าง เซ็ลทรัลเชียงราย</option>
-                    <option value="เชียงรายไนท์บาร์ซาร์">เชียงรายไนท์บาร์ซาร์</option>
-                    <option value="แม่จัน">แม่จัน</option>
-                    <option value="อาคารเรียนรวม C5 (อาคารพลตำรวจเอกเภา สารสิน)">อาคารเรียนรวม C5</option>
-                    <option value="อาคารปฏิบัติการ S">อาคารปฏิบัติการ S</option>
-                    <option value="ศูนย์บรรณสารและสื่อการศึกษา (ห้องสมุด)">ศูนย์บรรณสารและสื่อการศึกษา (ห้องสมุด)</option>
-                    <option value="หอพักลำดวน">หอพักลำดวน</option>
-                    <option value="อาคารเรียน C1 ">อาคารเรียน C1 </option>
-                    <option value="อาคารเรียน C2 ">อาคารเรียน C2 </option>
-                    <option value="อาคารเรียน C3 ">อาคารเรียน C3</option>
-                    <option value="อาคารเรียน C4">อาคารเรียน C4 หอประชุมสมเด็จย่า</option>
-                    <option value="อาคารเรียน C5">อาคารเรียน C5</option>
-                    <option value="อาคารโรงอาอาหาร D1">อาคารโรงอาอาหาร D1</option>
-                    <option value="พิพิธภัณฑ์อารยธรรมลุ่มน้ำโขง D2">พิพิธภัณฑ์อารยธรรมลุ่มน้ำโขง D2</option>
-                    <option value="อาคารสำนักงานวิชา E1">อาคารสำนักงานวิชา E1</option>
-                    <option value="อาคารสำนักงานวิชา E2">อาคารสำนักงานวิชา E2</option>
-                    <option value="อาคารสำนักงานวิชา E3">อาคารสำนักงานวิชา E3</option>
-                    <option value="อาคารพลเอกสำเภา ชูศรี E4">อาคารพลเอกสำเภา ชูศรี E4</option>
-                    <option value="อาคารปรีคลินิก M3">อาคารปรีคลินิก M3</option>
-                    <option value="อาคาร M-Square">อาคาร M-Square</option>
-                </select>
-            </div>
-            <button type="button" class="btn btn-primary mb-3" onclick="getLocation()">📍 ปักหมุด GPS</button>
-            <input type="hidden" id="gpsLocation">
-            <div class="mb-3">
-                <label class="form-label">วัน/เดือน/ปี และกำหนด เวลา</label>
-                <input type="datetime-local" class="form-control" id="datetime" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">ช่องทางการชำระเงิน</label>
-                <select class="form-select" id="payment">
-                    <option value="bank">โอนเงิน (QR Code)</option>
-                    <option value="cash">เงินสด</option>
-                </select>
-            </div>
-            <h5>ข้อมูลคนขับ</h5>
-            <img src="img/S__50946052.jpg" class="img-fluid" alt="Driver" style="width:100px;">
-            <p>ชื่อ: กอล์ฟ</p>
-            <p>เบอร์ติดต่อ: 086-4480221</p>
-            <p>ทะเบียนรถ: กจ 2217 เชียงราย</p>
-            <button type="submit" class="btn btn-success">🚗 เรียกรถเข้ารับ</button>
-        </form>
-    </div>
-
-    <script>
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    document.getElementById('gpsLocation').value = position.coords.latitude + ", " + position.coords.longitude;
-                    alert("ตำแหน่งถูกบันทึกแล้ว!");
-                });
-            } else {
-                alert("เบราว์เซอร์ของคุณไม่รองรับการระบุตำแหน่ง");
-            }
+    <title>ระบบจัดการอู่ซ่อมรถยนต์</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0787f0;
+            --secondary-color: #3207f0;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
         }
         
-        $("#bookingForm").submit(function(event) {
-            event.preventDefault();
-            let fullName = $("#fullname").val();
-            let phone = $("#phone").val();
-            let pickup = $("#pickup").val().split(",")[0];
-            let dropoff = $("#dropoff").val().split(",")[0];
-            let datetime = $("#datetime").val();
-            let payment = $("#payment").val();
-            let gps = $("#gpsLocation").val();
-            let message = `🚖 รายการจองใหม่\n👤 ผู้โดยสาร: ${fullName}\n📞 เบอร์: ${phone}\n📍 จุดไปรับ: ${pickup}\n🎯 จุดไปส่ง: ${dropoff}\n⏰ เวลา: ${datetime}\n💰 การชำระเงิน: ${payment}\n📌 พิกัด: ${gps}`;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', 'Sarabun', sans-serif;
+        }
+        
+        body {
+            background-color: #6e6d6d;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+        }
+        
+        main {
+            padding: 2rem 0;
+        }
+        
+        .service-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+        
+        .tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .service-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        select, input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .capture-section {
+            margin-top: 20px;
+        }
+        
+        .camera-btn, .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .camera-btn i, .submit-btn i {
+            margin-right: 5px;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent-color);
+        }
+        
+        #camera-feed, #captured-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        #captured-image {
+            display: none;
+        }
+        
+        #captured-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
             
-            let telegramBotToken = "7989781918:AAEvVAOitRjpK-F1eLAtFrPv53nI7x_mjBA";
-            let telegramChatId = "8047952744";
-            let telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${encodeURIComponent(message)}`;
+            .logo {
+                margin-bottom: 10px;
+                justify-content: center;
+            }
             
-            $.get(telegramUrl, function() {
-                alert("ส่งข้อมูลการจองสำเร็จ!");
-                location.reload();
+            .service-tabs {
+                flex-direction: column;
+            }
+            
+            .capture-section {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .camera-btn, .submit-btn {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                
+                <i class="fas fa-car-mechanic fa-2x"></i>
+                <h1>อู่ช่างกอล์ฟ</h1>
+            </div>
+           <div>
+            <img src="img/Untitled-1.png" width="160pm" height="80pm">
+           </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="service-tabs">
+            <div class="tab active" data-target="engine-service">
+                <i class="fas fa-cogs"></i> บริการซ่อมเครื่องยนต์
+            </div>
+            <div class="tab" data-target="oil-service">
+                <i class="fas fa-oil-can"></i> บริการเปลี่ยนถ่ายน้ำมันเครื่อง
+            </div>
+        </div>
+        
+        <div class="service-content">
+            <div id="engine-service" class="content-section active">
+                <h2><i class="fas fa-cogs"></i> บริการซ่อมเครื่องยนต์</h2>
+                <form id="engine-form">
+                    <div class="form-group">
+                        <label for="engine-service-type">เลือกบริการซ่อมเครื่องยนต์:</label>
+                        <select id="engine-service-type" required>
+                            <option value="">-- เลือกบริการ --</option>
+                            <option value="engine-check">ตรวจเช็คเครื่องยนต์</option>
+                            <option value="engine-repair">ซ่อมเครื่องยนต์</option>
+                            <option value="engine-overhaul">โอเวอร์ฮอลเครื่องยนต์</option>
+                            <option value="cooling-system">ระบบหล่อเย็น</option>
+                            <option value="electrical-system">ระบบไฟฟ้าเครื่องยนต์</option>
+                            <option value="fuel-system">ระบบน้ำมันเชื้อเพลิง</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="engine-problem">รายละเอียดปัญหา:</label>
+                        <textarea id="engine-problem" rows="3" placeholder="อธิบายปัญหาของเครื่องยนต์"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="engine-car-model">รุ่นรถยนต์:</label>
+                        <input type="text" id="engine-car-model" placeholder="เช่น Toyota Camry, Honda Civic">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="engine-mileage">เลขไมล์ (กิโลเมตร):</label>
+                        <input type="number" id="engine-mileage" placeholder="ใส่เลขไมล์ปัจจุบัน" required>
+                    </div>
+                    
+                    <div class="capture-section">
+                        <label>ถ่ายภาพเครื่องยนต์:</label>
+                        <button type="button" id="engine-camera-btn" class="camera-btn">
+                            <i class="fas fa-camera"></i> เปิดกล้อง
+                        </button>
+                        <button type="button" id="engine-snapshot-btn" class="camera-btn" style="display:none;">
+                            <i class="fas fa-camera"></i> ถ่ายภาพ
+                        </button>
+                        
+                        <div id="engine-camera-feed"></div>
+                        <div id="engine-captured-image"></div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> ส่งข้อมูล
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="oil-service" class="content-section">
+                <h2><i class="fas fa-oil-can"></i> บริการเปลี่ยนถ่ายน้ำมันเครื่อง</h2>
+                <form id="oil-form">
+                    <div class="form-group">
+                        <label for="oil-service-type">เลือกบริการน้ำมันเครื่อง:</label>
+                        <select id="oil-service-type" required>
+                            <option value="">-- เลือกบริการ --</option>
+                            <option value="oil-change">เปลี่ยนถ่ายน้ำมันเครื่อง</option>
+                            <option value="oil-filter">เปลี่ยนกรองน้ำมันเครื่อง</option>
+                            <option value="oil-package">แพ็คเกจเปลี่ยนถ่ายน้ำมันเครื่องพร้อมกรอง</option>
+                            <option value="gear-oil">น้ำมันเกียร์</option>
+                            <option value="power-steering-oil">น้ำมันพวงมาลัยเพาเวอร์</option>
+                            <option value="brake-oil">น้ำมันเบรก</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="oil-type">ชนิดน้ำมันเครื่อง:</label>
+                        <select id="oil-type">
+                            <option value="">-- เลือกชนิดน้ำมันเครื่อง --</option>
+                            <option value="synthetic">น้ำมันเครื่องสังเคราะห์เต็มสูตร (Fully Synthetic)</option>
+                            <option value="semi-synthetic">น้ำมันเครื่องกึ่งสังเคราะห์ (Semi-Synthetic)</option>
+                            <option value="mineral">น้ำมันเครื่องแร่ธรรมชาติ (Mineral)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="oil-car-model">รุ่นรถยนต์:</label>
+                        <input type="text" id="oil-car-model" placeholder="เช่น Toyota Camry, Honda Civic">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="oil-mileage">เลขไมล์ (กิโลเมตร):</label>
+                        <input type="number" id="oil-mileage" placeholder="ใส่เลขไมล์ปัจจุบัน" required>
+                    </div>
+                    
+                    <div class="capture-section">
+                        <label>ถ่ายภาพเลขไมล์หรือสภาพน้ำมันเครื่อง:</label>
+                        <button type="button" id="oil-camera-btn" class="camera-btn">
+                            <i class="fas fa-camera"></i> เปิดกล้อง
+                        </button>
+                        <button type="button" id="oil-snapshot-btn" class="camera-btn" style="display:none;">
+                            <i class="fas fa-camera"></i> ถ่ายภาพ
+                        </button>
+                        
+                        <div id="oil-camera-feed"></div>
+                        <div id="oil-captured-image"></div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> ส่งข้อมูล
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 อู่ซ่อมรถChevrolet Optra บริการดีเยี่ยม</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const tabs = document.querySelectorAll('.tab');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    // Remove active class from all tabs and content sections
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contentSections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(target).classList.add('active');
+                });
             });
+            
+            // Camera functionality for engine service
+            const engineCameraBtn = document.getElementById('engine-camera-btn');
+            const engineSnapshotBtn = document.getElementById('engine-snapshot-btn');
+            const engineCameraFeed = document.getElementById('engine-camera-feed');
+            const engineCapturedImage = document.getElementById('engine-captured-image');
+            let engineStream = null;
+            let engineVideoElement = null;
+            
+            engineCameraBtn.addEventListener('click', async function() {
+                try {
+                    engineStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    
+                    engineVideoElement = document.createElement('video');
+                    engineVideoElement.srcObject = engineStream;
+                    engineVideoElement.autoplay = true;
+                    engineCameraFeed.innerHTML = '';
+                    engineCameraFeed.appendChild(engineVideoElement);
+                    
+                    engineCameraBtn.style.display = 'none';
+                    engineSnapshotBtn.style.display = 'inline-flex';
+                } catch (error) {
+                    alert('ไม่สามารถเข้าถึงกล้องได้: ' + error.message);
+                }
+            });
+            
+            engineSnapshotBtn.addEventListener('click', function() {
+                if (engineVideoElement) {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = engineVideoElement.videoWidth;
+                    canvas.height = engineVideoElement.videoHeight;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(engineVideoElement, 0, 0, canvas.width, canvas.height);
+                    
+                    const img = document.createElement('img');
+                    img.src = canvas.toDataURL('image/png');
+                    
+                    engineCapturedImage.innerHTML = '';
+                    engineCapturedImage.appendChild(img);
+                    engineCapturedImage.style.display = 'block';
+                    engineCameraFeed.style.display = 'none';
+                    
+                    // Stop the stream
+                    engineStream.getTracks().forEach(track => track.stop());
+                    engineSnapshotBtn.style.display = 'none';
+                    engineCameraBtn.style.display = 'inline-flex';
+                    engineCameraBtn.textContent = 'ถ่ายภาพใหม่';
+                    engineCameraBtn.innerHTML = '<i class="fas fa-camera"></i> ถ่ายภาพใหม่';
+                }
+            });
+            
+            // Camera functionality for oil service
+            const oilCameraBtn = document.getElementById('oil-camera-btn');
+            const oilSnapshotBtn = document.getElementById('oil-snapshot-btn');
+            const oilCameraFeed = document.getElementById('oil-camera-feed');
+            const oilCapturedImage = document.getElementById('oil-captured-image');
+            let oilStream = null;
+            let oilVideoElement = null;
+            
+            oilCameraBtn.addEventListener('click', async function() {
+                try {
+                    oilStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    
+                    oilVideoElement = document.createElement('video');
+                    oilVideoElement.srcObject = oilStream;
+                    oilVideoElement.autoplay = true;
+                    oilCameraFeed.innerHTML = '';
+                    oilCameraFeed.appendChild(oilVideoElement);
+                    
+                    oilCameraBtn.style.display = 'none';
+                    oilSnapshotBtn.style.display = 'inline-flex';
+                } catch (error) {
+                    alert('ไม่สามารถเข้าถึงกล้องได้: ' + error.message);
+                }
+            });
+            
+            oilSnapshotBtn.addEventListener('click', function() {
+                if (oilVideoElement) {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = oilVideoElement.videoWidth;
+                    canvas.height = oilVideoElement.videoHeight;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(oilVideoElement, 0, 0, canvas.width, canvas.height);
+                    
+                    const img = document.createElement('img');
+                    img.src = canvas.toDataURL('image/png');
+                    
+                    oilCapturedImage.innerHTML = '';
+                    oilCapturedImage.appendChild(img);
+                    oilCapturedImage.style.display = 'block';
+                    oilCameraFeed.style.display = 'none';
+                    
+                    // Stop the stream
+                    oilStream.getTracks().forEach(track => track.stop());
+                    oilSnapshotBtn.style.display = 'none';
+                    oilCameraBtn.style.display = 'inline-flex';
+                    oilCameraBtn.textContent = 'ถ่ายภาพใหม่';
+                    oilCameraBtn.innerHTML = '<i class="fas fa-camera"></i> ถ่ายภาพใหม่';
+                }
+            });
+            
+            // Form submission for engine service
+            const engineForm = document.getElementById('engine-form');
+            
+            engineForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const serviceType = document.getElementById('engine-service-type').value;
+                const problem = document.getElementById('engine-problem').value;
+                const carModel = document.getElementById('engine-car-model').value;
+                const mileage = document.getElementById('engine-mileage').value;
+                
+                // Check if image was captured
+                let imageData = null;
+                if (engineCapturedImage.querySelector('img')) {
+                    imageData = engineCapturedImage.querySelector('img').src;
+                }
+                
+                // Prepare data for sending
+                const formData = {
+                    service: 'engine',
+                    type: serviceType,
+                    problem: problem,
+                    carModel: carModel,
+                    mileage: mileage,
+                    image: imageData
+                };
+                
+                // Send to Telegram Bot
+                sendToTelegram(formData);
+            });
+            
+            // Form submission for oil service
+            const oilForm = document.getElementById('oil-form');
+            
+            oilForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const serviceType = document.getElementById('oil-service-type').value;
+                const oilType = document.getElementById('oil-type').value;
+                const carModel = document.getElementById('oil-car-model').value;
+                const mileage = document.getElementById('oil-mileage').value;
+                
+                // Check if image was captured
+                let imageData = null;
+                if (oilCapturedImage.querySelector('img')) {
+                    imageData = oilCapturedImage.querySelector('img').src;
+                }
+                
+                // Prepare data for sending
+                const formData = {
+                    service: 'oil',
+                    type: serviceType,
+                    oilType: oilType,
+                    carModel: carModel,
+                    mileage: mileage,
+                    image: imageData
+                };
+                
+                // Send to Telegram Bot
+                sendToTelegram(formData);
+            });
+            
+            // Function to send data to Telegram
+            function sendToTelegram(data) {
+                // Replace with your actual Telegram Bot API token and chat ID
+                const botToken = '7939792617:AAEai_7HdaAspfuiMGTEjrcJPgVXLDDFldw';
+                const chatId = '8047952744';
+                
+                // Format message for Telegram
+                let message = '🚗 *รายการใหม่*\n';
+                message += `📌 บริการ: ${data.service === 'engine' ? 'ซ่อมเครื่องยนต์' : 'เปลี่ยนถ่ายน้ำมันเครื่อง'}\n`;
+                message += `📌 ประเภท: ${data.type}\n`;
+                
+                if (data.service === 'engine') {
+                    message += `📌 ปัญหา: ${data.problem || 'ไม่ระบุ'}\n`;
+                } else {
+                    message += `📌 ชนิดน้ำมัน: ${data.oilType || 'ไม่ระบุ'}\n`;
+                }
+                
+                message += `📌 รุ่นรถ: ${data.carModel || 'ไม่ระบุ'}\n`;
+                message += `📌 เลขไมล์: ${data.mileage} กม.\n`;
+                
+                // In a real application, you would send the image and message to Telegram
+                // This is a simulation for demonstration purposes
+                
+                // Simulate API call
+                setTimeout(() => {
+                    alert('ส่งข้อมูลเรียบร้อยแล้ว! ขอบคุณที่ใช้บริการ');
+                    
+                    // Reset forms
+                    if (data.service === 'engine') {
+                        engineForm.reset();
+                        engineCapturedImage.innerHTML = '';
+                        engineCapturedImage.style.display = 'none';
+                        engineCameraFeed.style.display = 'block';
+                    } else {
+                        oilForm.reset();
+                        oilCapturedImage.innerHTML = '';
+                        oilCapturedImage.style.display = 'none';
+                        oilCameraFeed.style.display = 'block';
+                    }
+                    
+                    console.log('ข้อมูลที่ส่งไป Telegram:', message);
+                    if (data.image) {
+                        console.log('ส่งรูปภาพแล้ว');
+                    }
+                }, 1500);
+                
+                // In a real application, you would use the Telegram Bot API
+                // Example fetch request (commented out):
+                /*
+                fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    
+                    // If there's an image, send it too
+                    if (data.image) {
+                        // Convert base64 to blob and send
+                        // This requires additional handling
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('เกิดข้อผิดพลาดในการส่งข้อมูล');
+                });
+                */
+            }
         });
     </script>
 </body>
